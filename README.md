@@ -1,3 +1,27 @@
+# Odysseus Mobile Companion App
+
+> **This is a fork of [pewdiepie-archdaemon/odysseus](https://github.com/pewdiepie-archdaemon/odysseus) that adds a mobile companion app.**
+>
+> A touch-first **thin client** (Capacitor + React + TypeScript) that pairs with your
+> Odysseus server and turns a phone into a remote control — the phone does no AI work,
+> it talks to a small owner-scoped `/api/companion/*` bridge.
+>
+> **What it does:** QR / manual pairing with a revocable, chat-scoped token · live chat
+> with reasoning view and **agent / web / terminal / deep-research** toggles · attach
+> images from the phone or a PC file · chat search · **voice dictation** · plus read &
+> act on **email** (with AI summary / reply), **calendar, notes, tasks** · installable
+> Android APK or a mobile web build.
+>
+> **Where to look:** [`companion/mobile/`](companion/mobile/) (the app) · [`companion/`](companion/) (the bridge + design notes).
+>
+> **Upstream contributions from this work:** a CORS-preflight auth bug fix **merged upstream**
+> ([#3262](https://github.com/pewdiepie-archdaemon/odysseus/pull/3262)); proposal & discussion in
+> [#3244](https://github.com/pewdiepie-archdaemon/odysseus/issues/3244).
+>
+> Everything below is the upstream Odysseus README.
+
+---
+
 # Odysseus
 
 ```
