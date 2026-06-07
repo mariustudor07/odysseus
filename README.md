@@ -1,26 +1,46 @@
-# Odysseus Mobile Companion App
+# Odysseus — Mobile Companion App
 
-> **This is a fork of [pewdiepie-archdaemon/odysseus](https://github.com/pewdiepie-archdaemon/odysseus) that adds a mobile companion app.**
->
-> A touch-first **thin client** (Capacitor + React + TypeScript) that pairs with your
-> Odysseus server and turns a phone into a remote control — the phone does no AI work,
-> it talks to a small owner-scoped `/api/companion/*` bridge.
->
-> **What it does:** QR / manual pairing with a revocable, chat-scoped token · live chat
-> with reasoning view and **agent / web / terminal / deep-research** toggles · attach
-> images from the phone or a PC file · chat search · **voice dictation** · plus read &
-> act on **email** (with AI summary / reply), **calendar, notes, tasks** · installable
-> Android APK or a mobile web build.
->
-> **Where to look:** [`companion/mobile/`](companion/mobile/) (the app) · [`companion/`](companion/) (the bridge + design notes).
->
-> **Upstream contributions from this work:** a CORS-preflight auth bug fix **merged upstream**
-> ([#3262](https://github.com/pewdiepie-archdaemon/odysseus/pull/3262)); proposal & discussion in
-> [#3244](https://github.com/pewdiepie-archdaemon/odysseus/issues/3244).
->
-> Everything below is the upstream Odysseus README.
+A fork of **[pewdiepie-archdaemon/odysseus](https://github.com/pewdiepie-archdaemon/odysseus)** that adds a **mobile companion app**: pair your phone with your self-hosted Odysseus and use it as a remote. The phone does no AI work — it talks to a small, owner-scoped `/api/companion/*` bridge on the server.
+
+> One change from this work — a CORS-preflight auth fix — is **merged upstream** ([#3262](https://github.com/pewdiepie-archdaemon/odysseus/pull/3262)). The companion app itself lives in this fork; design discussion is [#3244](https://github.com/pewdiepie-archdaemon/odysseus/issues/3244).
+
+## What this fork adds (vs. upstream)
+
+| Area | Added in this fork |
+|---|---|
+| **Mobile app** | `companion/mobile/` — Capacitor + React + TypeScript thin client; installable **Android APK** or a mobile web build |
+| **Pairing** | QR scan or manual, using a **revocable, chat-scoped token** (not a full admin login on the phone) |
+| **Chat** | live streaming + collapsible reasoning ("thinking") view; **agent / web / terminal / deep-research** toggles |
+| **Attachments** | from the **phone** (camera/gallery) or by browsing a **PC file**; thumbnails in history |
+| **Voice** | press-to-dictate (speech-to-text) |
+| **Tools** | **email** (read + AI summary / reply / send), **calendar**, **notes**, **tasks** |
+| **Search** | full-text search across your chat history |
+| **Server bridge** | `companion/routes.py` — thin, owner-scoped `/api/companion/*` wrappers over the existing machinery (no new LLM logic) |
+| **Desktop** | a **Tools → Companion app** entry that shows the pairing QR (local + tunnel, behind a risk note) |
+
+## Quick start (the companion)
+
+**1. Run the Odysseus server** — same as upstream (see the original README below), e.g.:
+```bash
+uvicorn app:app --host 0.0.0.0 --port 7000      # or: docker compose up
+```
+
+**2. Build the companion app:**
+```bash
+cd companion/mobile
+npm install
+npm run build
+npm run preview -- --host          # mobile web build, served on your LAN
+# or build an installable Android APK — see companion/mobile/README.md
+```
+
+**3. Pair your phone:** in the PC's Odysseus UI, open **Tools → Companion app**, then scan the QR in the app (or type the host + token). Phone and PC must reach each other — same Wi-Fi, or a private tunnel like **Tailscale** for access from anywhere (don't port-forward).
+
+More detail: [`companion/mobile/README.md`](companion/mobile/README.md) · [`companion/README.md`](companion/README.md).
 
 ---
+
+*Everything below is the original upstream Odysseus README.*
 
 # Odysseus
 
