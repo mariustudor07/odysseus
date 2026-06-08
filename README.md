@@ -38,6 +38,14 @@ npm run preview -- --host          # mobile web build, served on your LAN
 
 More detail: [`companion/mobile/README.md`](companion/mobile/README.md) · [`companion/README.md`](companion/README.md).
 
+## Status & roadmap
+
+- **v1 (this repo):** Capacitor + React + TypeScript — built and working end-to-end.
+- **Tested on:**
+  - Android phone — installed APK, paired over LAN.
+  - **Arch Linux (Wayland + Caelestia shell)** — runs with no issues.
+- **Next (v2, planned):** a from-scratch **React Native (Expo)** rewrite in a separate repo for a more native feel — liquid-glass UI, optimized local storage, smoother gestures — aiming for ChatGPT-app-grade UX.
+
 ---
 
 *Everything below is the original upstream Odysseus README.*
